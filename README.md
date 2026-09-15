@@ -1,7 +1,8 @@
+
 # GameHub - Plataforma Web Oficial del Videojoc Gamedev
 
 <p align="center">
-  <img width="100%" alt="image" src="https://github.com/user-attachments/assets/20738cd7-81d8-4868-9326-84951d44e7cc" />
+  <img width="100%" alt="image" src="https://github.com/user-attachments/assets/d0b901da-914f-4c04-8a72-3fc40df754aa" />
 </p>
 
 Plataforma web integrada per al videojoc. El projecte centralitza el devlog de desenvolupament, la comunitat de jugadors i una botiga d'ítems i moneda virtual (skins, diamants, monedes).
@@ -53,7 +54,7 @@ Es poden crear usuaris, posts i comentaris manualment des del mateix client fron
 ## TV1: GameHub - Monòlit Django 5
 
 <p align="center">
-  <img width="100%" alt="image" src="https://github.com/user-attachments/assets/3859d6f5-098a-4ad1-b46b-9058095ad251" />
+  <img width="100%" alt="image" src="https://github.com/user-attachments/assets/5553914b-cdbe-471f-9251-899127e59e5e" />
 </p>
 
 Versió inicial desenvolupada sobre **Django 5.2** seguint els patrons del llibre *"Django 5 By Example"* (5a edició) d'Antonio Melé.
