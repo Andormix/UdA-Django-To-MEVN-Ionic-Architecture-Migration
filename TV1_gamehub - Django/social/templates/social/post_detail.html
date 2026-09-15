@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Community Post{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <strong>{{ post.user.username }}</strong>
+          <small class="text-muted">{{ post.created|date:"N j, Y, g:i a" }}</small>
+        </div>
+        <p class="mt-2">{{ post.body }}</p>
+        {% if post.image %}
+          <img src="{{ post.image.url }}" class="img-fluid rounded" style="max-height:400px;">
+        {% endif %}
+      </div>
+    </div>
+
+    <h4>Replies ({{ replies.count }})</h4>
+
+    {% for reply in replies %}
+      <div class="card mb-3 ms-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <strong>{{ reply.user.username }}</strong>
+            <small class="text-muted">{{ reply.created|date:"N j, Y, g:i a" }}</small>
+          </div>
+          <p class="mt-2 mb-1">{{ reply.body }}</p>
+          {% if reply.image %}
+            <img src="{{ reply.image.url }}" class="img-fluid rounded" style="max-height:200px;">
+          {% endif %}
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-muted">No replies yet.</p>
+    {% endfor %}
+
+    {% if request.user.is_authenticated %}
+      <div class="card mt-3">
+        <div class="card-header">Leave a Reply</div>
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Reply</button>
+          </form>
+        </div>
+      </div>
+    {% else %}
+      <p class="text-muted mt-3">
+        <a href="{% url 'login' %}">Log in</a> to leave a reply.
+      </p>
+    {% endif %}
+  </div>
+
+  <div class="col-md-4">
+    <a href="{% url 'social:post_list' %}" class="btn btn-outline-secondary w-100">← Back to Community</a>
+  </div>
+</div>
+{% endblock %}

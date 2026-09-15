@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Search DevLog{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <h1>Search Posts</h1>
+    <form method="get" class="mb-4">
+      <div class="input-group">
+        {{ form.query }}
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+
+    {% if query %}
+      <h3>Results for &ldquo;{{ query }}&rdquo;</h3>
+      {% for post in results %}
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </h5>
+            <p class="card-text text-muted small">
+              Published {{ post.publish|date:"N j, Y" }} by {{ post.author }}
+            </p>
+            <p class="card-text">{{ post.body|truncatewords:20 }}</p>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-muted">No results found for &ldquo;{{ query }}&rdquo;.</p>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

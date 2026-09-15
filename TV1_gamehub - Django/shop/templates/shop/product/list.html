@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}{% if category %}{{ category.name }}{% else %}Shop{% endif %}{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-header">Categories</div>
+      <div class="list-group list-group-flush">
+        <a href="{% url 'shop:product_list' %}"
+           class="list-group-item list-group-item-action {% if not category %}active{% endif %}">
+          All Items
+        </a>
+        {% for c in categories %}
+          <a href="{{ c.get_absolute_url }}"
+             class="list-group-item list-group-item-action {% if category.slug == c.slug %}active{% endif %}">
+            {{ c.name }}
+            <small class="text-muted d-block">{{ c.get_category_type_display }}</small>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <h1 class="mb-4">{% if category %}{{ category.name }}{% else %}All Items{% endif %}</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for product in products %}
+        <div class="col">
+          <div class="card h-100">
+            {% if product.image %}
+              <img src="{{ product.image.url }}" class="card-img-top" style="height:180px; object-fit:cover;" alt="{{ product.name }}">
+            {% else %}
+              <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height:180px;">
+                <span>No Image</span>
+              </div>
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="{{ product.get_absolute_url }}" class="text-decoration-none">{{ product.name }}</a>
+              </h5>
+              <p class="card-text text-muted small">{{ product.get_product_type_display }}</p>
+              <p class="card-text fw-bold">${{ product.price }}</p>
+            </div>
+            <div class="card-footer">
+              <a href="{{ product.get_absolute_url }}" class="btn btn-primary btn-sm w-100">View Details</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12">
+          <p class="text-muted">No products available in this category.</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

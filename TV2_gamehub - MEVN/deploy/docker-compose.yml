@@ -1,0 +1,49 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: tv2-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build:
+      context: ../backend
+      args:
+        NPM_STRICT_SSL: "false"
+    container_name: tv2-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongo:27017/gamehub_mevn
+      - JWT_SECRET=dev_secret_replace_me
+      - CORS_ORIGIN=http://localhost:5173
+    volumes:
+      - ../backend:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+
+  frontend:
+    build:
+      context: ../frontend
+      args:
+        NPM_STRICT_SSL: "false"
+    container_name: tv2-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_MEVN_API_BASE_URL=/mevn-api
+      - VITE_DJANGO_API_BASE_URL=/django-api
+      - MEVN_PROXY_TARGET=http://backend:3000
+      - DJANGO_PROXY_TARGET=http://host.docker.internal:8000
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

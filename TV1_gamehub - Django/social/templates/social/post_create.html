@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}New Community Post{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header"><h4 class="mb-0">Create Community Post</h4></div>
+      <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+          {{ form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">Post</button>
+          <a href="{% url 'social:post_list' %}" class="btn btn-secondary ms-2">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
