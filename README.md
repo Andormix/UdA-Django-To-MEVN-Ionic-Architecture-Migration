@@ -4,10 +4,6 @@
   <img width="100%" alt="image" src="https://github.com/user-attachments/assets/20738cd7-81d8-4868-9326-84951d44e7cc" />
 </p>
 
-<p align="center">
-  <img width="100%" alt="image" src="https://github.com/user-attachments/assets/976eb816-f035-4f70-8523-531e2b78426f" />
-</p>
-
 Plataforma web integrada per al videojoc. El projecte centralitza el devlog de desenvolupament, la comunitat de jugadors i una botiga d'ítems i moneda virtual (skins, diamants, monedes).
 
 **Autors:** Eric Torrontera Ruiz i Pau Santos Villalba
