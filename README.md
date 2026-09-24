@@ -1,4 +1,4 @@
-# 🎮 GameHub — Django to MEVN & Ionic Architecture Migration
+# GameHub — Django to MEVN & Ionic Architecture Migration
 
 [![Django](https://img.shields.io/badge/Original%20Backend-Django%205-092E20?style=for-the-badge&logo=django&logoColor=white)](#)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](#)
