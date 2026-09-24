@@ -102,7 +102,7 @@ The project demonstrates:
 
 ## Architecture Evolution
 
-### Original Architecture — TV1
+### Original Architecture — V1
 
 ```text
 ┌─────────────────────────────┐
@@ -122,18 +122,18 @@ The project demonstrates:
         SQLite / Django ORM
 ```
 
-### Migrated Architecture — TV2
+### Migrated Architecture — V2
 
 ```text
 ┌─────────────────────────────┐
 │       Vue 3 Frontend        │
-│        SPA Application       │
+│        SPA Application      │
 └──────────────┬──────────────┘
                │
                │ HTTP / REST
                │
 ┌──────────────▼──────────────┐
-│    Express + Node Backend    │
+│    Express + Node Backend   │
 │                             │
 │  - Authentication           │
 │  - Posts                    │
